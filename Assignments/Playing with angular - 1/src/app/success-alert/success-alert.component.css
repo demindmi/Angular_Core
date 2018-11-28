@@ -1,0 +1,13 @@
+div{
+    text-align: center;
+    background-color: lightgreen;
+    border: 2px solid greenyellow;
+}
+
+span{
+    font-weight: bold;
+}
+
+p{
+    color:rgb(16, 128, 16);
+}

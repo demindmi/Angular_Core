@@ -1,0 +1,8 @@
+<h3>Inactive Users<span *ngIf="moves"> - Number of moves from here = {{moves}}</span></h3>
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let user of users; let i = index">
+    {{ user }} | <a href="#" (click)="onSetActive(i)">Set to Active</a>
+  </li>
+</ul>

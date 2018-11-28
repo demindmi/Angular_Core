@@ -1,0 +1,13 @@
+div{
+    text-align: center;
+    background-color: lightcoral;
+    border: 2px solid red;
+}
+
+span{
+    font-weight: bold;
+}
+
+p{
+    color:rgb(128, 33, 16);
+}

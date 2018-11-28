@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <br><br>
+      <ul class="list-group">
+        <div *ngIf="!onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let number of evenNum"
+            [ngClass]="{even:number%2 ==0}"
+            [ngStyle]="{backgroundColor:number%2==0 ? 'lightgrey':'pink'}">
+            {{number}}
+          </li>
+      </div>
+      <div *appUnless="!onlyOdd">
+        <li
+          class="list-group-item"
+          *ngFor="let number of oddNum"
+          [ngClass]="{odd:number%2 !==0}"
+          [ngStyle]="{backgroundColor:number%2!=0 ? 'lightblue':'pink'}">
+                      <!-- assing odd class if the number is not divisible by 2 -->
+          {{number}}
+        </li>
+    </div>
+    <hr>
+    <div [ngSwitch]="value">
+      <p *ngSwitchCase="5">Value is 5</p>
+      <p *ngSwitchCase="10">Value is 10</p>
+      <p *ngSwitchCase="100">Value is 100</p>
+      <p *ngSwitchDefault>Value is Default</p>     
+    </div>
+      <!-- <div *ngIf="onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let number of oddNum"
+            [ngClass]="{odd:number%2 !==0}"
+            [ngStyle]="{backgroundColor:number%2!=0 ? 'lightblue':'pink'}"> -->
+                        <!-- assing odd class if the number is not divisible by 2 -->
+            <!-- {{number}}
+          </li>
+      </div> -->
+
+      <!-- behing the scene - this is how *ngif works - it renders this element only if this is true -->
+      <!-- <ng-template [ngIf]="onlyOdd">
+        <div>
+          <li
+          class="list-group-item"
+          *ngFor="let number of oddNum"
+          [ngClass]="{odd:number%2 !==0}"
+          [ngStyle]="{backgroundColor:number%2!=0 ? 'lightblue':'pink'}">
+                      <!-- assing odd class if the number is not divisible by 2 -->
+          <!-- {{number}}
+        </li>
+        </div>
+      </ng-template> -->
+
+      </ul>
+      <p AppBasicHighlight> Styled with BasicHighlightDirective that we created</p>
+      <p appBetterHighlight> Styled with BetterHighlightDirective that we created</p>
+      <p appSuperHighlight> Styled with SuperHiglightDirective that we created</p>
+      <p appUltraHighlight [higlightColor]="'red'" deafultColor=orange> Styled with UltraHiglightDirective that we created</p>
+      
+    </div>
+  </div>
+</div>

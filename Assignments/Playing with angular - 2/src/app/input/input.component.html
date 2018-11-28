@@ -1,0 +1,14 @@
+<input 
+type="text" 
+class="form-control"
+[(ngModel)]="username"
+>
+<p>{{username}}</p>
+
+<button
+  class="btn btn-danger"
+  [disabled]="username === ''"
+  (click)="username = ''"
+>
+  Refresh Name
+</button>
