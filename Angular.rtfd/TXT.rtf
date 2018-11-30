@@ -4,11 +4,15 @@
 {\colortbl;\red255\green255\blue255;\red155\green162\blue177;\red30\green33\blue39;\red214\green85\blue98;
 \red197\green136\blue83;\red136\green185\blue102;\red173\green173\blue173;\red81\green157\blue235;\red72\green168\blue181;
 \red222\green180\blue104;\red184\green93\blue213;\red74\green80\blue93;\red252\green118\blue111;\red164\green8\blue3;
-\red179\green179\blue179;\red0\green0\blue0;}
+\red179\green179\blue179;\red0\green0\blue0;\red155\green162\blue177;\red30\green33\blue39;\red214\green85\blue98;
+\red81\green157\blue235;\red173\green173\blue173;\red184\green93\blue213;\red72\green168\blue181;\red222\green180\blue104;
+}
 {\*\expandedcolortbl;;\cssrgb\c67059\c69804\c74902;\cssrgb\c15686\c17255\c20392;\cssrgb\c87843\c42353\c45882;
 \cssrgb\c81961\c60392\c40000;\cssrgb\c59608\c76471\c47451;\cssrgb\c73333\c73333\c73333;\cssrgb\c38039\c68627\c93725;\cssrgb\c33725\c71373\c76078;
 \cssrgb\c89804\c75294\c48235;\cssrgb\c77647\c47059\c86667;\cssrgb\c36078\c38824\c43922;\cssrgb\c100000\c55025\c50890;\cssrgb\c71055\c10387\c0;
-\csgray\c75407;\csgray\c0\c0;}
+\csgray\c75407;\csgray\c0\c0;\cssrgb\c67059\c69804\c74902;\cssrgb\c15686\c17255\c20392;\cssrgb\c87843\c42353\c45882;
+\cssrgb\c38039\c68627\c93725;\cssrgb\c73333\c73333\c73333;\cssrgb\c77647\c47059\c86667;\cssrgb\c33725\c71373\c76078;\cssrgb\c89804\c75294\c48235;
+}
 \margl1440\margr1440\vieww22520\viewh17140\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
@@ -645,4 +649,31 @@ Here we have the services called AccountService that injects (requires) Logging 
 \cf11 \cb3 export\cf2  \cf11 class\cf2  \cf10 AppModule\cf2  \{ \cf9 ...\cf2  \}\cf7 \cb1 \
 \pard\pardeftab720\sl360\partightenfactor0
 \cf15 \cb16 Using this new syntax is completely optional, the traditional syntax (using providers[] ) will still work. The "new syntax" does offer one advantage though: Services can be loaded lazily by Angular (behind the scenes) and redundant code can be removed automatically. This can lead to a better performance and loading speed - though this really only kicks in for bigger services and apps in general.\
+\'97\'97\'97\'97\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf15 Subscribe: allows us to keep track of changes of observable or event:\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf17 \cb18 \outl0\strokewidth0 \strokec17  \cf19 \strokec19 this\cf17 \strokec17 .\cf19 \strokec19 shoppinglistService\cf17 \strokec17 .\cf19 \strokec19 ingridentsChanged\cf17 \strokec17 .\cf20 \strokec20 subscribe\cf17 \strokec17 (\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17         value \cf22 \strokec22 =>\cf17 \strokec17  \{\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17           \cf19 \strokec19 this\cf17 \strokec17 .\cf19 \strokec19 ingredients\cf17 \strokec17  \cf23 \strokec23 =\cf17 \strokec17  value;\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17         \}\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17     )\cf21 \cb1 \strokec21 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf15 \cb16 \outl0\strokewidth0 Or\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf17 \cb18 \outl0\strokewidth0 \strokec17     \cf19 \strokec19 this\cf17 \strokec17 .\cf19 \strokec19 shoppinglistService\cf17 \strokec17 .\cf19 \strokec19 ingridentsChanged\cf17 \strokec17 .\cf20 \strokec20 subscribe\cf17 \strokec17 (\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17         (gotIngredients\cf23 \strokec23 :\cf24 \strokec24 Ingredient\cf17 \strokec17 []) \cf22 \strokec22 =>\cf17 \strokec17  \{\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17           \cf19 \strokec19 this\cf17 \strokec17 .\cf19 \strokec19 ingredients\cf17 \strokec17  \cf23 \strokec23 =\cf17 \strokec17  gotIngredients;\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17         \}\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17     )\cf21 \cb1 \strokec21 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf15 \cb16 \outl0\strokewidth0 This is an observable for this even emitter:\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf17 \cb18 \outl0\strokewidth0 \strokec17  ingridentsChanged \cf23 \strokec23 =\cf17 \strokec17  \cf22 \strokec22 new\cf17 \strokec17  \cf24 \strokec24 EventEmitter\cf17 \strokec17 <\cf24 \strokec24 Ingredient\cf17 \strokec17 []>(); \cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17   \cf20 \strokec20 addIngredient\cf17 \strokec17 (ingredient\cf23 \strokec23 :\cf24 \strokec24 Ingredient\cf17 \strokec17 )\{\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17     \cf19 \strokec19 this\cf17 \strokec17 .\cf19 \strokec19 ingredients\cf17 \strokec17 .\cf23 \strokec23 push\cf17 \strokec17 (ingredient);\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17     \cf19 \strokec19 this\cf17 \strokec17 .\cf19 \strokec19 ingridentsChanged\cf17 \strokec17 .\cf20 \strokec20 emit\cf17 \strokec17 (\cf19 \strokec19 this\cf17 \strokec17 .\cf19 \strokec19 ingredients\cf17 \strokec17 .\cf23 \strokec23 slice\cf17 \strokec17 ());\cf21 \cb1 \strokec21 \
+\cf17 \cb18 \strokec17   \}\cf21 \cb1 \strokec21 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf15 \cb16 \outl0\strokewidth0 \
 }
